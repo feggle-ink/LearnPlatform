@@ -6,40 +6,28 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.util.Date;
 
-@TableName("tb_user")
-public class User {
+@TableName("tb_staff")
+public class Staff {
 
     @TableId(type = IdType.AUTO)
-    private long userId;
+    private long staffId;
 
-    private String openId;
-
-    private String nickname;
-
-    private String uname;
+    private String staffName;
 
     /**
-     * 企业员工激活码
+     * MD5加密
      */
     private String password;
-
-    /**
-     * 员工权限, 0-非企业员工, 1-企业员工
-     */
-    private Boolean role;
 
     /**
      * 0-男,1-女
      */
     private Boolean sex;
 
-    private String photo;
-
-    private long departId;
-
-    private String telephone;
-
-    private String email;
+    /**
+     * 1-管理员, 2-超级管理员
+     */
+    private Boolean role;
 
     private String description;
 
@@ -58,100 +46,55 @@ public class User {
 
     private int rowVersion;
 
+    /**
+     * 0-正常,-1-删除
+     */
     private Boolean isValid;
 
     /**
-     * @return user_id
+     * @return staff_id
      */
-    public long getUserId() {
-        return userId;
+    public long getStaffId() {
+        return staffId;
     }
 
     /**
-     * @param userId
+     * @param staffId
      */
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setStaffId(long staffId) {
+        this.staffId = staffId;
     }
 
     /**
-     * @return open_id
+     * @return staff_name
      */
-    public String getOpenId() {
-        return openId;
+    public String getStaffName() {
+        return staffName;
     }
 
     /**
-     * @param openId
+     * @param staffName
      */
-    public void setOpenId(String openId) {
-        this.openId = openId;
+    public void setStaffName(String staffName) {
+        this.staffName = staffName;
     }
 
     /**
-     * @return uname
-     */
-    public String getUname() {
-        return uname;
-    }
-
-    /**
-     * @param uname
-     */
-    public void setUname(String uname) {
-        this.uname = uname;
-    }
-
-    /**
+     * 获取MD5加密
      *
-     * @return
-     */
-    public String getNickname() {
-        return nickname;
-    }
-
-    /**
-     *
-     * @param nickname
-     */
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    /**
-     * 获取企业员工激活码
-     *
-     * @return password - 企业员工激活码
+     * @return password - MD5加密
      */
     public String getPassword() {
         return password;
     }
 
     /**
-     * 设置企业员工激活码
+     * 设置MD5加密
      *
-     * @param password 企业员工激活码
+     * @param password MD5加密
      */
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    /**
-     * 获取员工权限, 0-非企业员工, 1-企业员工
-     *
-     * @return role - 员工权限, 0-非企业员工, 1-企业员工
-     */
-    public Boolean getRole() {
-        return role;
-    }
-
-    /**
-     * 设置员工权限, 0-非企业员工, 1-企业员工
-     *
-     * @param role 员工权限, 0-非企业员工, 1-企业员工
-     */
-    public void setRole(Boolean role) {
-        this.role = role;
     }
 
     /**
@@ -173,59 +116,21 @@ public class User {
     }
 
     /**
-     * @return photo
+     * 获取1-管理员, 2-超级管理员
+     *
+     * @return role - 1-管理员, 2-超级管理员
      */
-    public String getPhoto() {
-        return photo;
+    public Boolean getRole() {
+        return role;
     }
 
     /**
-     * @param photo
+     * 设置1-管理员, 2-超级管理员
+     *
+     * @param role 1-管理员, 2-超级管理员
      */
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
-    /**
-     * @return depart_id
-     */
-    public long getDepartId() {
-        return departId;
-    }
-
-    /**
-     * @param departId
-     */
-    public void setDepartId(long departId) {
-        this.departId = departId;
-    }
-
-    /**
-     * @return telephone
-     */
-    public String getTelephone() {
-        return telephone;
-    }
-
-    /**
-     * @param telephone
-     */
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    /**
-     * @return email
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * @param email
-     */
-    public void setEmail(String email) {
-        this.email = email;
+    public void setRole(Boolean role) {
+        this.role = role;
     }
 
     /**
@@ -331,14 +236,18 @@ public class User {
     }
 
     /**
-     * @return is_valid
+     * 获取0-正常,-1-删除
+     *
+     * @return is_valid - 0-正常,-1-删除
      */
     public Boolean getIsValid() {
         return isValid;
     }
 
     /**
-     * @param isValid
+     * 设置0-正常,-1-删除
+     *
+     * @param isValid 0-正常,-1-删除
      */
     public void setIsValid(Boolean isValid) {
         this.isValid = isValid;

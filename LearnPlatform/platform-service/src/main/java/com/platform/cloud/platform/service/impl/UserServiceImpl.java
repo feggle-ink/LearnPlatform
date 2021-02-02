@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserApi {
         List<UserInfoDTO> userInfoDTOList = new ArrayList<>();
         for (User user : users) {
             UserInfoDTO userInfoDTO = new UserInfoDTO();
-            userInfoDTO.setUser_id(user.getUser_id());
+            userInfoDTO.setUserId(user.getUserId());
             userInfoDTO.setEmail(user.getEmail());
             userInfoDTOList.add(userInfoDTO);
         }

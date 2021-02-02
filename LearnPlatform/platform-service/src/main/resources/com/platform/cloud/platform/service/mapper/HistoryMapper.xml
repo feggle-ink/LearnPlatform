@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.platform.cloud.platform.service.mapper.HistoryMapper">
+
+    <!--status 0代表可用状态-->
+    <select id="getHistoryCourse" resultType="com.platform.cloud.platform.service.entity.Course">
+        SELECT * FROM tb_history t1 RIGHT JOIN
+                      (SELECT course_id,max(create_date) create_date FROM tb_history GROUP BY course_id) t2
+                      ON t1.course_id = t2.course_id AND t1.create_date = t2.create_date
+        WHERE create_by = #{userId} AND status = ${0}
+        LIMIT #{num}
+    </select>
+
+
+</mapper>

@@ -11,8 +11,8 @@ import java.io.Serializable;
 @Data
 public class UserInfoDTO implements Serializable {
 
-    int user_id;
-    String open_id;
+    long userId;
+    String openId;
     String uname;
     String password;
     int role;

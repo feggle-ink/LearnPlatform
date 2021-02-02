@@ -2,13 +2,17 @@ package com.platform.cloud;
 
 import com.platform.cloud.platform.service.entity.User;
 import com.platform.cloud.platform.service.mapper.UserMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Date;
 
 @SpringBootTest
+@Slf4j
 class PlatformServiceApplicationTests {
 
     @Autowired
@@ -17,21 +21,21 @@ class PlatformServiceApplicationTests {
     @Test
     void contextLoads() {
         System.out.println("=============================");
+        log.info("日志记录测试================");
         for (User user : userMapper.selectList(null)) {
-            System.out.println(user.getUser_id()+"+++++++++++++");
+            System.out.println("+++++++++++++" + user);
             System.out.println(user.getUname()+"--------------");
-            System.out.println(user.getCreate_date()+"--------------");
-            System.out.println("");
+            System.out.println(user.getCreateDate()+"--------------");
         }
     }
 
     @Test
     void insertTest(){
         User user = new User();
-        user.setOpen_id("weixin0009");
+        user.setOpenId("weixin0009");
         user.setUname("李四");
         user.setEmail("99999999@qq.com");
-        user.setCreate_date(new Date());
+        user.setCreateDate(new Date());
         userMapper.insert(user);
     }
 
@@ -45,7 +49,7 @@ class PlatformServiceApplicationTests {
     @Test
     void findCommentUser(){
         User commentUser = userMapper.findCommentUser();
-        System.out.print(commentUser.getUname()+"======"+commentUser.getUser_id()+"======"+commentUser.getCreate_date());
+        System.out.print(commentUser.getUname()+"======"+commentUser.getUserId()+"======"+commentUser.getCreateDate());
     }
 
 }

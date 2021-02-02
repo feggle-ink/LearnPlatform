@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.platform.cloud.platform.service.mapper.CollectMapper">
+
+    <!--status 0代表可用状态-->
+    <select id="getCollectCourse" resultType="com.platform.cloud.platform.service.entity.Course">
+        SELECT * FROM tb_collect t1
+        where create_by = 1 and `status`=0 ORDER BY create_date LIMIT 2
+    </select>
+
+
+</mapper>

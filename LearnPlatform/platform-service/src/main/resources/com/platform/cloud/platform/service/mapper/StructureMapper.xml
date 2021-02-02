@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.platform.cloud.platform.service.mapper.StructureMapper">
+
+    <!--status为0表示表示在用状态，-1表示删除状态-->
+    <select id="getHotStructure" resultType="com.platform.cloud.platform.service.entity.Structure">
+        select t3.structure_id,
+               t3.structure_code,
+               t3.structure_name,
+               t3.pic1,
+               t3.click_num,
+               CONCAT(t1.structure_name,",",t2.structure_name,",",t3.structure_name) as description,
+               t3.status
+        from (select * from tb_structure WHERE structure_id = #{pid}) as t1
+        left join tb_structure t2 on t1.structure_id = t2.pid
+        left join tb_structure t3 on t2.structure_id = t3.pid
+        where t1.status = ${0} and t2.status = ${0} and t3.status = ${0}
+        order by t3.click_num DESC LIMIT #{num}
+
+    </select>
+
+
+    <update id="clickAdd" parameterType="long">
+         update tb_structure set click_num=click_num+1 where structure_id=#{structureId}
+    </update>
+
+</mapper>

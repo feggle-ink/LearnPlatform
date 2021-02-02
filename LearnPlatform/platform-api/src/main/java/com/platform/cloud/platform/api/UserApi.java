@@ -12,5 +12,4 @@ public interface UserApi {
      * @return
      */
     ApiResult<List<UserInfoDTO>> getUserList();
-
 }
