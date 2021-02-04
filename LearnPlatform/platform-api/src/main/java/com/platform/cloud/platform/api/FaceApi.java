@@ -25,5 +25,9 @@ public interface FaceApi {
      */
     public ApiResult loadVideoPage(long structrueId,long userId);
 
-
+    /**
+     * 点击视频，增加播放次数
+     * @param courseId
+     */
+    public void clickVideoAdd(long courseId);
 }

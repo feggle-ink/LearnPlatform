@@ -4,7 +4,6 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/platform-api/pom.xml" />
-        <option value="$PROJECT_DIR$/platform-service/pom.xml" />
         <option value="$PROJECT_DIR$/platform-client/pom.xml" />
       </list>
     </option>

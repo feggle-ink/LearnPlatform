@@ -1,6 +1,9 @@
 package com.platform.cloud.platform.api;
 
+import com.platform.cloud.platform.api.entity.History;
 import com.platform.cloud.platform.api.result.ApiResult;
+
+import java.util.List;
 
 /**
  * @author: yin fei
@@ -15,13 +18,33 @@ public interface UserDataApi {
     public ApiResult loadHistoryCollect(long userId);
 
     /**
-     * 添加收藏
-     */
-    public ApiResult addCollect(long userId);
-
-    /**
      * 取消收藏
      */
-    public ApiResult cancelCollect(long collect_id,long userId);
+    public ApiResult cancelCollect(long userId, long courseId);
+
+    /**
+     * 添加收藏
+     */
+    public ApiResult addCollect(long userId, long courseId);
+
+    /**
+     * 切出播放视屏，记录当前用户观看历史
+     */
+    public ApiResult addHistory(List<History> hisList,int duration,long structureId,long userId);
+
+    /**
+     * 视屏播放完成后，增加看完视屏的记录
+     * @param userId
+     * @param courseId
+     */
+    public ApiResult finishCourse(long userId,long courseId);
+
+    /**
+     * 从历史记录、收藏点击加载到视频播放页
+     * @param userId
+     * @param courseId
+     * @return
+     */
+    public ApiResult loadUserVideoPage(long userId,long courseId);
 
 }

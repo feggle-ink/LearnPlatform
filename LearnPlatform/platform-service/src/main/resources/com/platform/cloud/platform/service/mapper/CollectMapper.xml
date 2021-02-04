@@ -5,8 +5,11 @@
 
     <!--status 0代表可用状态-->
     <select id="getCollectCourse" resultType="com.platform.cloud.platform.service.entity.Course">
-        SELECT * FROM tb_collect t1
-        where create_by = 1 and `status`=0 ORDER BY create_date LIMIT 2
+        SELECT t.* FROM tb_course t RIGHT JOIN
+            (SELECT * FROM tb_collect
+            WHERE create_by = #{userId} AND status = ${0}
+            ORDER BY create_date DESC LIMIT #{num}) t1
+        ON t.course_id = t1.course_id
     </select>
 
 

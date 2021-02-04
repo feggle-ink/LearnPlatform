@@ -1,25 +1,37 @@
 package com.platform.cloud.platform.service.entity;
 
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-
 import java.io.Serializable;
 import java.util.Date;
 
-@TableName("tb_collect")
-public class Collect implements Serializable{
-    @TableId
-    private long collectId;
+public class History implements Serializable {
+
+    private long historyId;
 
     private long courseId;
+
+    /**
+     * 最后一次观看的时间戳
+     */
+    private double lastStamp;
+
+    /**
+     * 观看该视频总时长
+     */
+    private double totalTime;
 
     /**
      * 评论内容
      */
     private String description;
 
+    /**
+     * 0-前台展示历史记录,-1-非展示历史记录,在产生新历史记录时更改
+     */
     private int status;
 
+    /**
+     * user_id
+     */
     private long createBy;
 
     private Date createDate;
@@ -31,22 +43,22 @@ public class Collect implements Serializable{
     private int rowVersion;
 
     /**
-     * 0-正常,-1-取消收藏
+     * 0-正常,-1-删除
      */
-    private int isValid;
+    private Boolean isValid;
 
     /**
-     * @return collect_id
+     * @return history_id
      */
-    public long getCollectId() {
-        return collectId;
+    public long getHistoryId() {
+        return historyId;
     }
 
     /**
-     * @param collectId
+     * @param historyId
      */
-    public void setCollectId(long collectId) {
-        this.collectId = collectId;
+    public void setHistoryId(long historyId) {
+        this.historyId = historyId;
     }
 
     /**
@@ -61,6 +73,42 @@ public class Collect implements Serializable{
      */
     public void setCourseId(long courseId) {
         this.courseId = courseId;
+    }
+
+    /**
+     * 获取最后一次观看的时间戳
+     *
+     * @return last_stamp - 最后一次观看的时间戳
+     */
+    public double getLastStamp() {
+        return lastStamp;
+    }
+
+    /**
+     * 设置最后一次观看的时间戳
+     *
+     * @param lastStamp 最后一次观看的时间戳
+     */
+    public void setLastStamp(double lastStamp) {
+        this.lastStamp = lastStamp;
+    }
+
+    /**
+     * 获取观看该视频总时长
+     *
+     * @return total_time - 观看该视频总时长
+     */
+    public double getTotalTime() {
+        return totalTime;
+    }
+
+    /**
+     * 设置观看该视频总时长
+     *
+     * @param totalTime 观看该视频总时长
+     */
+    public void setTotalTime(double totalTime) {
+        this.totalTime = totalTime;
     }
 
     /**
@@ -82,14 +130,18 @@ public class Collect implements Serializable{
     }
 
     /**
-     * @return status
+     * 获取0-前台展示历史记录,-1-非展示历史记录,在产生新历史记录时更改
+     *
+     * @return status - 0-前台展示历史记录,-1-非展示历史记录,在产生新历史记录时更改
      */
     public int getStatus() {
         return status;
     }
 
     /**
-     * @param status
+     * 设置0-前台展示历史记录,-1-非展示历史记录,在产生新历史记录时更改
+     *
+     * @param status 0-前台展示历史记录,-1-非展示历史记录,在产生新历史记录时更改
      */
     public void setStatus(int status) {
         this.status = status;
@@ -170,20 +222,20 @@ public class Collect implements Serializable{
     }
 
     /**
-     * 获取0-正常,-1-取消收藏
+     * 获取0-正常,-1-删除
      *
-     * @return is_valid - 0-正常,-1-取消收藏
+     * @return is_valid - 0-正常,-1-删除
      */
-    public int getIsValid() {
+    public Boolean getIsValid() {
         return isValid;
     }
 
     /**
-     * 设置0-正常,-1-取消收藏
+     * 设置0-正常,-1-删除
      *
-     * @param isValid 0-正常,-1-取消收藏
+     * @param isValid 0-正常,-1-删除
      */
-    public void setIsValid(int isValid) {
+    public void setIsValid(Boolean isValid) {
         this.isValid = isValid;
     }
 }

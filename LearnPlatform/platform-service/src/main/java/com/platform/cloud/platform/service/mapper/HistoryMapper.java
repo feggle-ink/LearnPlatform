@@ -1,8 +1,9 @@
 package com.platform.cloud.platform.service.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.platform.cloud.platform.api.entity.History;
 import com.platform.cloud.platform.service.entity.Course;
-import com.platform.cloud.platform.service.entity.History;
+
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -16,4 +17,5 @@ public interface HistoryMapper extends BaseMapper<History>{
 
     public List<Course> getHistoryCourse(@Param("userId") long userId, @Param("num") int num);
 
+    public int addHistory(@Param("hisList")List<History> hisList, @Param("userId")long userId);
 }

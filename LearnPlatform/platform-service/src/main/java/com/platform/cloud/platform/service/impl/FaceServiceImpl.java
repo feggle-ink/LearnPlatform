@@ -12,6 +12,7 @@ import com.platform.cloud.platform.service.mapper.HistoryMapper;
 import com.platform.cloud.platform.service.mapper.MaqueeMapper;
 import com.platform.cloud.platform.service.mapper.StructureMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,6 +39,7 @@ public class FaceServiceImpl implements FaceApi {
      * @return
      */
     @Override
+    @Transactional(readOnly = true)
     public ApiResult getFaceData() {
 
         QueryWrapper<Maquee> maqueeWrapper = new QueryWrapper<>();
@@ -73,6 +75,7 @@ public class FaceServiceImpl implements FaceApi {
      * @return
      */
     @Override
+    @Transactional(readOnly = true)
     public ApiResult loadStructureTree() {
 
         QueryWrapper<Structure> structureQueryWrapper = new QueryWrapper<Structure>();
@@ -90,6 +93,7 @@ public class FaceServiceImpl implements FaceApi {
      * @return
      */
     @Override
+    @Transactional(readOnly = true)
     public ApiResult loadVideoPage(long structrueId,long userId) {
 
         Structure structure = structureMapper.selectById(structrueId);
@@ -102,7 +106,7 @@ public class FaceServiceImpl implements FaceApi {
 
         List<Course> courseWithHistory = courseMapper.getCourseWithHistory(structrueId, userId);
 
-        if(latestCourse==null&&courseWithHistory!=null&&courseWithHistory.get(0)!=null)
+        if(latestCourse==null&&courseWithHistory!=null&&courseWithHistory.size()!=0&&courseWithHistory.get(0)!=null)
             latestCourseId = courseWithHistory.get(0).getCourseId();
 
         HashMap<Object, Object> loadHashMap = new HashMap<>();
@@ -112,6 +116,15 @@ public class FaceServiceImpl implements FaceApi {
         loadHashMap.put("courseWithHistory",courseWithHistory);
 
         return ApiResult.success(loadHashMap);
+    }
+
+    /**
+     * 点击视频，播放量+1
+     * @param courseId
+     */
+    @Override
+    public void clickVideoAdd(long courseId) {
+        courseMapper.clickCourseAdd(courseId);
     }
 
     /**

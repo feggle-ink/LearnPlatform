@@ -4,8 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/platform-api/platform-api.iml" filepath="$PROJECT_DIR$/platform-api/platform-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/platform-client/platform-client.iml" filepath="$PROJECT_DIR$/platform-client/platform-client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/platform-service/platform-service.iml" filepath="$PROJECT_DIR$/platform-service/platform-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/platform-service/platform-web.iml" filepath="$PROJECT_DIR$/platform-service/platform-web.iml" />
     </modules>
   </component>
 </project>

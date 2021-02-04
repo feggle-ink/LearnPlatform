@@ -1,14 +1,10 @@
 package com.platform.cloud.platform.service.entity;
 
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-
 import java.io.Serializable;
 import java.util.Date;
 
-@TableName("tb_collect")
 public class Collect implements Serializable{
-    @TableId
+
     private long collectId;
 
     private long courseId;

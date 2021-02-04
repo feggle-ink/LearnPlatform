@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.platform.cloud.platform.service.mapper.StructureMapper">
 
-    <!--status为0表示表示在用状态，-1表示删除状态-->
+    <!--is_valid为0表示表示在用状态，-1表示删除状态-->
     <select id="getHotStructure" resultType="com.platform.cloud.platform.service.entity.Structure">
         select t3.structure_id,
                t3.structure_code,
@@ -15,14 +15,33 @@
         from (select * from tb_structure WHERE structure_id = #{pid}) as t1
         left join tb_structure t2 on t1.structure_id = t2.pid
         left join tb_structure t3 on t2.structure_id = t3.pid
-        where t1.status = ${0} and t2.status = ${0} and t3.status = ${0}
+        where t1.is_valid = ${0} and t2.is_valid = ${0} and t3.is_valid = ${0}
         order by t3.click_num DESC LIMIT #{num}
 
     </select>
 
 
     <update id="clickAdd" parameterType="long">
-         update tb_structure set click_num=click_num+1 where structure_id=#{structureId}
+        UPDATE tb_structure t1
+            LEFT JOIN tb_structure t2
+            ON t1.pid = t2.structure_id
+            LEFT JOIN tb_structure t3
+            ON t2.pid = t3.structure_id
+        SET t1.click_num=t1.click_num+1,t2.click_num=t2.click_num+1,t3.click_num=t3.click_num+1
+            WHERE t1.structure_id = #{structureId}
     </update>
+
+    <select id="getStructureByCourseId" parameterType="long" resultType="com.platform.cloud.platform.service.entity.Structure">
+        select t.structure_id,
+               t.structure_code,
+               t.structure_name,
+               t.pic1,
+               t.click_num,
+               t.description,
+               t.status
+        from tb_structure t left join tb_course t1
+        on t.structure_id = t1.structure_id
+        where t1.course_id = #{courseId} and t.is_Valid = ${0}
+    </select>
 
 </mapper>

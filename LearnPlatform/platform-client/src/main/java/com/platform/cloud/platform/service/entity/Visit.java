@@ -1,25 +1,18 @@
 package com.platform.cloud.platform.service.entity;
 
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-
-import java.io.Serializable;
 import java.util.Date;
 
-@TableName("tb_collect")
-public class Collect implements Serializable{
-    @TableId
-    private long collectId;
+public class Visit {
 
-    private long courseId;
+    private long visitId;
 
-    /**
-     * 评论内容
-     */
     private String description;
 
-    private int status;
+    private Boolean status;
 
+    /**
+     * user_id
+     */
     private long createBy;
 
     private Date createDate;
@@ -31,51 +24,33 @@ public class Collect implements Serializable{
     private int rowVersion;
 
     /**
-     * 0-正常,-1-取消收藏
+     * 0-正常,-1-删除
      */
-    private int isValid;
+    private Boolean isValid;
 
     /**
-     * @return collect_id
+     * @return visit_id
      */
-    public long getCollectId() {
-        return collectId;
+    public long getVisitId() {
+        return visitId;
     }
 
     /**
-     * @param collectId
+     * @param visitId
      */
-    public void setCollectId(long collectId) {
-        this.collectId = collectId;
+    public void setVisitId(long visitId) {
+        this.visitId = visitId;
     }
 
     /**
-     * @return course_id
-     */
-    public long getCourseId() {
-        return courseId;
-    }
-
-    /**
-     * @param courseId
-     */
-    public void setCourseId(long courseId) {
-        this.courseId = courseId;
-    }
-
-    /**
-     * 获取评论内容
-     *
-     * @return description - 评论内容
+     * @return description
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * 设置评论内容
-     *
-     * @param description 评论内容
+     * @param description
      */
     public void setDescription(String description) {
         this.description = description;
@@ -84,14 +59,14 @@ public class Collect implements Serializable{
     /**
      * @return status
      */
-    public int getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
     /**
      * @param status
      */
-    public void setStatus(int status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 
@@ -170,20 +145,20 @@ public class Collect implements Serializable{
     }
 
     /**
-     * 获取0-正常,-1-取消收藏
+     * 获取0-正常,-1-删除
      *
-     * @return is_valid - 0-正常,-1-取消收藏
+     * @return is_valid - 0-正常,-1-删除
      */
-    public int getIsValid() {
+    public Boolean getIsValid() {
         return isValid;
     }
 
     /**
-     * 设置0-正常,-1-取消收藏
+     * 设置0-正常,-1-删除
      *
-     * @param isValid 0-正常,-1-取消收藏
+     * @param isValid 0-正常,-1-删除
      */
-    public void setIsValid(int isValid) {
+    public void setIsValid(Boolean isValid) {
         this.isValid = isValid;
     }
 }

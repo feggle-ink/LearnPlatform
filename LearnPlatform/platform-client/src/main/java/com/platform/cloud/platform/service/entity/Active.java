@@ -1,43 +1,33 @@
 package com.platform.cloud.platform.service.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-
 import java.io.Serializable;
 import java.util.Date;
 
-@TableName("tb_history")
-public class History implements Serializable {
+public class Active implements Serializable{
 
-    @TableId(type = IdType.AUTO)
-    private long historyId;
-
-    private long courseId;
+    private long activeId;
 
     /**
-     * 最后一次观看的时间戳
+     * 员工工号
      */
-    private double lastStamp;
+    private int employeeCode;
 
     /**
-     * 观看该视频总时长
+     * 员工姓名
      */
-    private double totalTime;
+    private String employeeName;
 
     /**
-     * 评论内容
+     * 身份证后六位
      */
+    private String employeeIdCard;
+
+    private long userId;
+
     private String description;
 
-    /**
-     * 0-前台展示历史记录,-1-非展示历史记录,在产生新历史记录时更改
-     */
-    private int status;
+    private Boolean status;
 
-    /**
-     * user_id
-     */
     private long createBy;
 
     private Date createDate;
@@ -54,118 +44,124 @@ public class History implements Serializable {
     private Boolean isValid;
 
     /**
-     * @return history_id
+     * @return active_id
      */
-    public long getHistoryId() {
-        return historyId;
+    public long getActiveId() {
+        return activeId;
     }
 
     /**
-     * @param historyId
+     * @param activeId
      */
-    public void setHistoryId(long historyId) {
-        this.historyId = historyId;
+    public void setActiveId(long activeId) {
+        this.activeId = activeId;
     }
 
     /**
-     * @return course_id
-     */
-    public long getCourseId() {
-        return courseId;
-    }
-
-    /**
-     * @param courseId
-     */
-    public void setCourseId(long courseId) {
-        this.courseId = courseId;
-    }
-
-    /**
-     * 获取最后一次观看的时间戳
+     * 获取员工工号
      *
-     * @return last_stamp - 最后一次观看的时间戳
+     * @return employee_code - 员工工号
      */
-    public double getLastStamp() {
-        return lastStamp;
+    public int getEmployeeCode() {
+        return employeeCode;
     }
 
     /**
-     * 设置最后一次观看的时间戳
+     * 设置员工工号
      *
-     * @param lastStamp 最后一次观看的时间戳
+     * @param employeeCode 员工工号
      */
-    public void setLastStamp(double lastStamp) {
-        this.lastStamp = lastStamp;
+    public void setEmployeeCode(int employeeCode) {
+        this.employeeCode = employeeCode;
     }
 
     /**
-     * 获取观看该视频总时长
+     * 获取员工姓名
      *
-     * @return total_time - 观看该视频总时长
+     * @return employee_name - 员工姓名
      */
-    public double getTotalTime() {
-        return totalTime;
+    public String getEmployeeName() {
+        return employeeName;
     }
 
     /**
-     * 设置观看该视频总时长
+     * 设置员工姓名
      *
-     * @param totalTime 观看该视频总时长
+     * @param employeeName 员工姓名
      */
-    public void setTotalTime(double totalTime) {
-        this.totalTime = totalTime;
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
     }
 
     /**
-     * 获取评论内容
+     * 获取身份证后六位
      *
-     * @return description - 评论内容
+     * @return employee_idcard - 身份证后六位
+     */
+    public String getEmployeeIdCard() {
+        return employeeIdCard;
+    }
+
+    /**
+     * 设置身份证后六位
+     *
+     * @param employeeIdCard 身份证后六位
+     */
+    public void setEmployeeIdCard(String employeeIdCard) {
+        this.employeeIdCard = employeeIdCard;
+    }
+
+    /**
+     * @return user_id
+     */
+    public long getUserId() {
+        return userId;
+    }
+
+    /**
+     * @param userId
+     */
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    /**
+     * @return description
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * 设置评论内容
-     *
-     * @param description 评论内容
+     * @param description
      */
     public void setDescription(String description) {
         this.description = description;
     }
 
     /**
-     * 获取0-前台展示历史记录,-1-非展示历史记录,在产生新历史记录时更改
-     *
-     * @return status - 0-前台展示历史记录,-1-非展示历史记录,在产生新历史记录时更改
+     * @return status
      */
-    public int getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
     /**
-     * 设置0-前台展示历史记录,-1-非展示历史记录,在产生新历史记录时更改
-     *
-     * @param status 0-前台展示历史记录,-1-非展示历史记录,在产生新历史记录时更改
+     * @param status
      */
-    public void setStatus(int status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 
     /**
-     * 获取user_id
-     *
-     * @return create_by - user_id
+     * @return create_by
      */
     public long getCreateBy() {
         return createBy;
     }
 
     /**
-     * 设置user_id
-     *
-     * @param createBy user_id
+     * @param createBy
      */
     public void setCreateBy(long createBy) {
         this.createBy = createBy;

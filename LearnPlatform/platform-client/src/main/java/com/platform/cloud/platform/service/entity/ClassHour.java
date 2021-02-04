@@ -1,25 +1,32 @@
 package com.platform.cloud.platform.service.entity;
 
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-
 import java.io.Serializable;
 import java.util.Date;
 
-@TableName("tb_collect")
-public class Collect implements Serializable{
-    @TableId
-    private long collectId;
+public class ClassHour implements Serializable {
 
-    private long courseId;
+    private long chId;
+
+    private long structureId;
+
+    /**
+     * 学习时长
+     */
+    private int learnTime;
 
     /**
      * 评论内容
      */
     private String description;
 
+    /**
+     * 0-前台展示历史记录,-1-非展示历史记录,在产生新历史记录时更改
+     */
     private int status;
 
+    /**
+     * user_id
+     */
     private long createBy;
 
     private Date createDate;
@@ -31,36 +38,33 @@ public class Collect implements Serializable{
     private int rowVersion;
 
     /**
-     * 0-正常,-1-取消收藏
+     * 0-正常,-1-删除
      */
     private int isValid;
 
-    /**
-     * @return collect_id
-     */
-    public long getCollectId() {
-        return collectId;
+
+    public long getChId() {
+        return chId;
     }
 
-    /**
-     * @param collectId
-     */
-    public void setCollectId(long collectId) {
-        this.collectId = collectId;
+    public void setChId(long chId) {
+        this.chId = chId;
     }
 
-    /**
-     * @return course_id
-     */
-    public long getCourseId() {
-        return courseId;
+    public long getStructureId() {
+        return structureId;
     }
 
-    /**
-     * @param courseId
-     */
-    public void setCourseId(long courseId) {
-        this.courseId = courseId;
+    public void setStructureId(long structureId) {
+        this.structureId = structureId;
+    }
+
+    public int getLearnTime() {
+        return learnTime;
+    }
+
+    public void setLearnTime(int learnTime) {
+        this.learnTime = learnTime;
     }
 
     /**
@@ -82,14 +86,18 @@ public class Collect implements Serializable{
     }
 
     /**
-     * @return status
+     * 获取0-前台展示历史记录,-1-非展示历史记录,在产生新历史记录时更改
+     *
+     * @return status - 0-前台展示历史记录,-1-非展示历史记录,在产生新历史记录时更改
      */
     public int getStatus() {
         return status;
     }
 
     /**
-     * @param status
+     * 设置0-前台展示历史记录,-1-非展示历史记录,在产生新历史记录时更改
+     *
+     * @param status 0-前台展示历史记录,-1-非展示历史记录,在产生新历史记录时更改
      */
     public void setStatus(int status) {
         this.status = status;
@@ -170,18 +178,18 @@ public class Collect implements Serializable{
     }
 
     /**
-     * 获取0-正常,-1-取消收藏
+     * 获取0-正常,-1-删除
      *
-     * @return is_valid - 0-正常,-1-取消收藏
+     * @return is_valid - 0-正常,-1-删除
      */
     public int getIsValid() {
         return isValid;
     }
 
     /**
-     * 设置0-正常,-1-取消收藏
+     * 设置0-正常,-1-删除
      *
-     * @param isValid 0-正常,-1-取消收藏
+     * @param isValid 0-正常,-1-删除
      */
     public void setIsValid(int isValid) {
         this.isValid = isValid;

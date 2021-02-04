@@ -17,4 +17,5 @@ public interface CourseMapper extends BaseMapper<Course> {
 
     public Course getLatestCourse(@Param("structureId") long structureId, @Param("userId") long userId);
 
+    public void clickCourseAdd(@Param("courseId") long courseId);
 }

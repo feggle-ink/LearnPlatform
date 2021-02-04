@@ -20,12 +20,18 @@ public interface StructureMapper extends BaseMapper<Structure> {
     public List<Structure> getHotStructure(@Param("pid") long pid,@Param("num") int num);
 
     /**
-     * 类别点击后，增加点击量
+     * 类别点击后，对该节点及父其节点以上，增加点击量
      */
     public void clickAdd(@Param("structureId")long structureId);
 
     /**
      * 加载整个目录树
      */
-    void loadStructureTree();
+    public void loadStructureTree();
+
+    /**
+     * 通过小节ID获取小类
+     * @param courseId
+     */
+    public Structure getStructureByCourseId(@Param("courseId") long courseId);
 }
