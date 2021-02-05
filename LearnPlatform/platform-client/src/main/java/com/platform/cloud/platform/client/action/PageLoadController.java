@@ -63,7 +63,6 @@ public class PageLoadController {
      */
     @RequestMapping("/videoPageLoad/{structureId}/{userId}/{courseId}")
     public Object videoPageLoad(@PathVariable long structureId,@PathVariable long userId,@PathVariable long courseId){
-        System.out.println(structureId+"=="+userId+"=="+courseId);
         if(courseId!=-1L)
             return userDataApi.loadUserVideoPage(userId,courseId);
         else

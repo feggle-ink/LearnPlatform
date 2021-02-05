@@ -41,14 +41,38 @@ public class UserDataServiceImpl implements UserDataApi {
     @Transactional(readOnly = true)
     public ApiResult loadHistoryCollect(long userId) {
 
-        List<Course> historyCourse = historyMapper.getHistoryCourse(userId, ConstantConfig.HISTORY_NUM);
-        List<Course> collectCourse = collectMapper.getCollectCourse(userId, ConstantConfig.COLLECT_NUM);
+        List<Course> historyCourse = historyMapper.getHistoryCourse(userId,0, ConstantConfig.HISTORY_NUM);
+        List<Course> collectCourse = collectMapper.getCollectCourse(userId,0, ConstantConfig.COLLECT_NUM);
 
         HashMap<Object, Object> loadHashMap = new HashMap<>();
         loadHashMap.put("historyCourse",historyCourse);
         loadHashMap.put("collectCourse",collectCourse);
 
         return ApiResult.success(loadHashMap);
+    }
+
+    /**
+     * 翻页加载用户历史记录
+     * @param page
+     * @param num
+     * @param userId
+     */
+    @Override
+    public ApiResult loadPageHistory(int page,int num,long userId){
+        List<Course> historyCourse = historyMapper.getHistoryCourse(userId, page*num+ConstantConfig.HISTORY_NUM, num);
+        return ApiResult.success(historyCourse);
+    }
+
+    /**
+     * 翻页加载用户收藏记录
+     * @param page
+     * @param num
+     * @param userId
+     */
+    @Override
+    public ApiResult loadPageCollect(int page,int num,long userId){
+        List<Course> collectCourse = collectMapper.getCollectCourse(userId, page*num+ConstantConfig.COLLECT_NUM, num);
+        return ApiResult.success(collectCourse);
     }
 
     /**

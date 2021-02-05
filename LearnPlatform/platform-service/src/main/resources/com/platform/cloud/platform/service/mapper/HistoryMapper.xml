@@ -18,7 +18,7 @@
             LEFT JOIN tb_course t3
             ON t1.course_id = t3.course_id
         WHERE t1.create_by = #{userId} AND t1.is_valid = ${0} ORDER BY t1.create_date DESC
-        LIMIT #{num}
+        LIMIT #{page},#{num}
     </select>
 
     <insert id="addHistory">

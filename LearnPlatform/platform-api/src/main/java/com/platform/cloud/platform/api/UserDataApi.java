@@ -18,6 +18,16 @@ public interface UserDataApi {
     public ApiResult loadHistoryCollect(long userId);
 
     /**
+     * 翻页加载用户学习历史记录
+     */
+    public ApiResult loadPageHistory(int page,int num,long userId);
+
+    /**
+     * 翻页加载用户收藏记录
+     */
+    public ApiResult loadPageCollect(int page,int num,long userId);
+
+    /**
      * 取消收藏
      */
     public ApiResult cancelCollect(long userId, long courseId);

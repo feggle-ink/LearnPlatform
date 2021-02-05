@@ -34,6 +34,28 @@ public class UserDataController {
     }
 
     /**
+     * 翻页加载历史记录
+     * @param userId
+     * @param page
+     * @param num
+     */
+    @RequestMapping("/historyPageLoad/{userId}/{page}/{num}")
+    public Object historyPageLoad(@PathVariable long userId,@PathVariable int page,@PathVariable int num){
+        return userDataApi.loadPageHistory(page,num,userId);
+    }
+
+    /**
+     * 翻页加载历史记录
+     * @param userId
+     * @param page
+     * @param num
+     */
+    @RequestMapping("/collectPageLoad/{userId}/{page}/{num}")
+    public Object collectPageLoad(@PathVariable long userId,@PathVariable int page,@PathVariable int num){
+        return userDataApi.loadPageCollect(page,num,userId);
+    }
+
+    /**
      * 添加收藏记录
      * @param userId
      * @param courseId

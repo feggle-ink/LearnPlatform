@@ -7,8 +7,8 @@
     <select id="getCollectCourse" resultType="com.platform.cloud.platform.service.entity.Course">
         SELECT t.* FROM tb_course t RIGHT JOIN
             (SELECT * FROM tb_collect
-            WHERE create_by = #{userId} AND status = ${0}
-            ORDER BY create_date DESC LIMIT #{num}) t1
+            WHERE create_by = #{userId} AND is_valid = ${0}
+            ORDER BY create_date DESC LIMIT #{page},#{num}) t1
         ON t.course_id = t1.course_id
     </select>
 

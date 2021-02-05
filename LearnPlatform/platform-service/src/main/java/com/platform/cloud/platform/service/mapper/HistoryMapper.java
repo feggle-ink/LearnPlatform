@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface HistoryMapper extends BaseMapper<History>{
 
-    public List<Course> getHistoryCourse(@Param("userId") long userId, @Param("num") int num);
+    public List<Course> getHistoryCourse(@Param("userId") long userId, @Param("page") int page, @Param("num") int num);
 
     public int addHistory(@Param("hisList")List<History> hisList, @Param("userId")long userId);
 }

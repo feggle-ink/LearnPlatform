@@ -239,11 +239,11 @@ public class Course implements Serializable {
         this.rowVersion = rowVersion;
     }
 
-    public int getValid() {
+    public int getIsValid() {
         return isValid;
     }
 
-    public void setValid(int valid) {
-        isValid = valid;
+    public void setIsValid(int isValid) {
+        this.isValid = isValid;
     }
 }

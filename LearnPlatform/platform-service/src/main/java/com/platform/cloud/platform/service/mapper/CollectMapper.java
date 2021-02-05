@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface CollectMapper extends BaseMapper<Collect>{
 
-    public List<Course> getCollectCourse(@Param("userId") long userId, @Param("num") int num);
+    public List<Course> getCollectCourse(@Param("userId") long userId,@Param("page") int page, @Param("num") int num);
 
 }
